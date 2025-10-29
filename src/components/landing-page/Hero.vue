@@ -180,6 +180,6 @@
   </section>
 </template>
 
-<script setup lang="ts">
+<script setup>
 import BgCircles from "./BgCircles.vue";
 </script>

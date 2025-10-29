@@ -36,7 +36,7 @@
   </section>
 </template>
 
-<script setup lang="ts">
+<script setup>
 import {
   BarChart3,
   Workflow,
