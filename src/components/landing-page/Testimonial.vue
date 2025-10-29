@@ -1,0 +1,146 @@
+<template>
+  <section
+    data-testid="test-testimonials-section"
+    id="testimonials"
+    class="py-20 px-4 bg-secondary/10"
+    aria-labelledby="testimonials-heading"
+    role="region"
+  >
+    <div class="max-w-6xl mx-auto">
+      <!-- Header -->
+      <div class="text-center mb-16" data-testid="test-testimonials-header">
+        <h2
+          id="testimonials-heading"
+          data-testid="test-testimonials-title"
+          class="text-3xl font-bold mb-4 text-primary"
+          role="heading"
+          aria-level="2"
+        >
+          What Our Customers Say
+        </h2>
+        <p
+          data-testid="test-testimonials-description"
+          class="text-lg text-primary/70 max-w-3xl mx-auto"
+        >
+          Join thousands of companies that have transformed their customer
+          support with Ticket Zen.
+        </p>
+      </div>
+
+      <!-- Testimonials Grid -->
+      <div
+        data-testid="test-testimonials-list"
+        class="grid grid-cols-1 md:grid-cols-3 gap-8"
+        role="list"
+        aria-label="Customer testimonials"
+      >
+        <article
+          v-for="(testimonial, index) in testimonials"
+          :key="index"
+          role="listitem"
+          :aria-label="`Testimonial from ${testimonial.name}, ${testimonial.position} at ${testimonial.company}`"
+          :data-testid="`test-testimonial-${index}`"
+          class="bg-foreground rounded-lg shadow-md p-8 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+        >
+          <!-- Header -->
+          <header
+            class="flex items-center mb-4"
+            :data-testid="`test-testimonial-header-${index}`"
+          >
+            <div
+              class="w-12 h-12 rounded-full flex items-center justify-center text-white font-bold mr-4"
+              :class="testimonial.color"
+              aria-hidden="true"
+            >
+              {{ testimonial.initials }}
+            </div>
+            <div>
+              <p
+                class="font-semibold text-primary"
+                :data-testid="`test-testimonial-name-${index}`"
+              >
+                {{ testimonial.name }}
+              </p>
+              <p
+                class="text-sm text-primary/60"
+                :data-testid="`test-testimonial-position-${index}`"
+              >
+                {{ testimonial.position }}, {{ testimonial.company }}
+              </p>
+            </div>
+          </header>
+
+          <!-- Quote Icon -->
+          <i
+            data-lucide="quote"
+            class="w-8 h-8 text-secondary mb-4"
+            aria-hidden="true"
+            :data-testid="`test-testimonial-quoteicon-${index}`"
+          ></i>
+
+          <!-- Content -->
+          <p
+            class="text-primary/80 italic"
+            :data-testid="`test-testimonial-content-${index}`"
+          >
+            “{{ testimonial.content }}”
+          </p>
+
+          <!-- Rating -->
+          <div
+            class="mt-4 flex"
+            role="img"
+            :aria-label="`Rating: ${testimonial.rating} out of 5 stars`"
+            :data-testid="`test-testimonial-rating-${index}`"
+          >
+            <span
+              v-for="n in testimonial.rating"
+              :key="n"
+              aria-hidden="true"
+              class="text-yellow-400"
+            >
+              ★
+            </span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+</template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+
+const testimonials = ref([
+  {
+    name: "Sarah Johnson",
+    position: "Head of Customer Success",
+    company: "TechCorp",
+    content:
+      "Ticket Zen has transformed our support operations. Response times are down 40% and customer satisfaction is at an all-time high.",
+    rating: 5,
+    initials: "SJ",
+    color: "bg-secondary",
+  },
+  {
+    name: "Michael Chen",
+    position: "Support Manager",
+    company: "ServiceHub",
+    content:
+      "The automation features alone have saved us countless hours. Our team can now focus on complex issues instead of repetitive tasks.",
+    rating: 5,
+    initials: "MC",
+    color: "bg-amber-500",
+  },
+  {
+    name: "Emily Rodriguez",
+    position: "CEO",
+    company: "StartupX",
+    content:
+      "As a growing company, Ticket Zen scaled with us perfectly. The insights from the dashboard helped us optimize our entire support strategy.",
+    rating: 5,
+    initials: "ER",
+    color: "bg-green-500",
+  },
+]);
+</script>
