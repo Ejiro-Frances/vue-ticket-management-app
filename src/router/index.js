@@ -2,13 +2,10 @@ import { createRouter, createWebHistory } from "vue-router";
 
 import Home from "../pages/Home.vue";
 import Login from "../pages/Login.vue";
+
 import Signup from "../pages/Signup.vue";
 import DashboardPage from "../pages/DashboardPage.vue";
 import TicketPage from "../pages/TicketPage.vue";
-// import Tickets from "@/pages/Tickets.vue";
-// import TicketDetails from "@/pages/TicketDetails.vue";
-
-// import NotFound from "@/pages/NotFound.vue";
 
 const routes = [
   {
